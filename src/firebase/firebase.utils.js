@@ -34,7 +34,7 @@ if(!snapshot.exist){
     }
 }
 return userRef;
-console.log(snapshot);
+
 
 }
 export const auth = firebase.auth();
