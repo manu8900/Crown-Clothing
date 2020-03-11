@@ -4,7 +4,10 @@ import {persistStore}from 'redux-persist';
 import rootReducer from './root-reducer';
 
 
-const middlewares =[logger];
+const middlewares =[];
+if(process.env.NODE_ENV === 'development'){//redux-logger will only run in development mode not in production mode
+    middlewares.push(logger);
+}
 
 export const store = createStore(rootReducer,applyMiddleware(...middlewares));
 
