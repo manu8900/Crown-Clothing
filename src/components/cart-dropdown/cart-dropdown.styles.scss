@@ -44,6 +44,14 @@
       flex-direction: column;
       overflow: scroll;
       overflow-x: hidden;
+
+      &--hidden{
+        height: 100px;
+        display: inherit;
+        flex-direction: inherit;
+        overflow-y: hidden;
+      }
+
     }
   
     button {

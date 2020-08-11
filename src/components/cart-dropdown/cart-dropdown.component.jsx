@@ -10,7 +10,7 @@ import './cart-dropdown.styles.scss';
 
 const CartDropdown = ({ cartItems, history, dispatch }) => (
     <div className="cart-dropdown">
-        <div className="cart-items">
+        <div className={`${cartItems.length ? 'cart-items' : 'cart-items--hidden'}`}>
             {cartItems.length ? (
                 cartItems.map(cartItem => (
                     <CartItem key={cartItem.id} item={cartItem} />
@@ -20,10 +20,14 @@ const CartDropdown = ({ cartItems, history, dispatch }) => (
                 )
             }
         </div>
-        <CustomButton onClick={() => {
+        {cartItems.length !== 0 ? (<CustomButton onClick={() => {
             history.push('/checkout');
             dispatch(toggleCartHidden())
-        }}>GO TO CHECKOUT</CustomButton>
+        }}>GO TO CHECKOUT</CustomButton>) : (<CustomButton onClick={() => {
+            history.push('/shop');
+            dispatch(toggleCartHidden())
+        }}>GO TO SHOP</CustomButton>)}
+        
     </div>
 );
 // const mapStateToProps = ({cart:{cartItems}}) =>({
